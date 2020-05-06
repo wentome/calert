@@ -21,3 +21,5 @@ func main() {
 		}
 	}
 }```
+
+./main id title message
