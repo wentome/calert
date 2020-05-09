@@ -18,7 +18,7 @@ import (
 
 type AMessage struct {
 	Id      string `json:"id"`
-	Title   string `json:"title"`
+	Type    string `json:"type"`
 	Time    string `json:"time"`
 	Message string `json:"message"`
 }
@@ -84,9 +84,9 @@ func (m *AlertMannager) post(message string) (string, error) {
 	return string(body), nil
 }
 
-func (m *AlertMannager) Send(title string, message string) (string, error) {
+func (m *AlertMannager) Send(message string) (string, error) {
 	m.AlertMessage.Id = m.AlertId
-	m.AlertMessage.Title = title
+	m.AlertMessage.Type = "alert"
 	m.AlertMessage.Time = time.Now().Format("2006-01-02 15:04:05")
 	m.AlertMessage.Message = message
 	messageGzipBase64 := m.gzipBase64(m.AlertMessage)
